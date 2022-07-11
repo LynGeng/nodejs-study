@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>express编写接口</title>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <button id="btnGet">GET</button>
+    <button id="btnPost">POST</button>
+    <button id="btnDelete">DELETE</button>
+    <button id="btnJSONP">JSONP</button>
+    <script>
+        $(function() {
+            // 1. 测试get接口
+            $('#btnGet').on('click', function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1/api/get',
+                    data: {name: 'zs', age: 20},
+                    success: function(res) {
+                        console.log(res);
+                    }
+                });
+            });
+            // 2. 测试post接口
+            $('#btnPost').on('click', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://127.0.0.1/api/post',
+                    data: {bookname: '三国演义', author: '罗贯中'},
+                    success: function(res) {
+                        console.log(res);
+                    }
+                });
+            });
+            // 3. 测试delete接口
+            $('#btnDelete').on('click', function() {
+                $.ajax({
+                    type: 'DELTET',
+                    url: 'http://127.0.0.1/api/delete',
+                    success: function(res) {
+                        console.log(res);
+                    }
+                });
+            });
+            // 4. 测试JSONP接口
+            $('#btnJSONP').on('click', function() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1/api/jsonp',
+                    dataType: 'jsonp', // 表示要发起jsonp的请求
+                    success: function(res) {
+                        console.log(res);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
